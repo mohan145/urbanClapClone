@@ -21,7 +21,7 @@ class ServicesViewSet(viewsets.ViewSet):
         serReq.status = 'ACCEPTED'
         serReq.save()
         serializer = ServicesSerializer(serReq)
-        return Response(serializer, status=status.HTTP_200_OK)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     @staticmethod
     def getServiceRequest(request, id):

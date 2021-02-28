@@ -21,7 +21,7 @@ class UserViewSet(viewsets.ViewSet):
         user.availability = True
         user.save()
         serializer = UserSerializer(user)
-        return Response(serializer, status=status.HTTP_200_OK)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
     @staticmethod
