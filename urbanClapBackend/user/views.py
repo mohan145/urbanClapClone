@@ -33,7 +33,9 @@ class UserViewSet(viewsets.ViewSet):
 
     @staticmethod
     def getUserByLocality(request, locality):
-        user = User.objects.get(locality=locality)
+        users = User.objects.filter(locality=locality,availability=True,user_type='SERVICE_PROVIDER')
+        if users:
+            user = users[0]
         serializer = UserSerializer(user)
         return Response(serializer.data, status=status.HTTP_200_OK)
 

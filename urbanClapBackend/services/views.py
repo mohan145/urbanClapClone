@@ -31,6 +31,7 @@ class ServicesViewSet(viewsets.ViewSet):
 
     @staticmethod
     def getAllServiceRequests(request, id):
-        serReq = Services.objects.get(client_id=id)
-        serializer = ServicesSerializer(serReq)
+        serReqs = Services.objects.filter(client_id=id)
+        print(serReqs)
+        serializer = ServicesSerializer(serReqs,many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
